@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// backend
+Route::group(['prefix' => 'admin','namespace'=>'backend'], function () {
+    Route::get('/', function () {
+        return view('backend.master.master');
+    });
+});
+// fontend
+Route::group(['namespace'=>'fontend'], function () {
+    Route::get('/', function () {
+        return view('fontend.master.master');
+    });
 });
