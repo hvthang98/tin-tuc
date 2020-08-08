@@ -16,10 +16,11 @@ class CreateNewsTable extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->text('summary')->nullable();
             $table->text('content');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(0);
             $table->integer('ordernum')->default(0);
-            $table->double('view');
+            $table->double('view')->default(0);
             $table->integer('categorys_id')->unsigned();
             $table->integer('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
