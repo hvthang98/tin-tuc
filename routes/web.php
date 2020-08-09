@@ -24,6 +24,10 @@ Route::group(['prefix' => 'admin','namespace'=>'backend'], function () {
     Route::group(['prefix' => 'user'], function () {
         Route::get('create','UserController@getCreate')->name('getCreateUser');
         Route::post('post','UserController@postCreate')->name('postCreateUser');
+        Route::get('list', 'UserController@getList')->name('listUser');
+        Route::get('delete/{id}','UserController@delete')->name('deleteUser');
+        Route::get('edit/{id}','UserController@getEdit')->name('getEditUser');
+        Route::post('update/{id}','UserController@update' )->name('updateUser');
     });
     
 });
