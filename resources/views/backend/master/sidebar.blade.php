@@ -31,7 +31,7 @@
                     </ul>
                 </li>
                 <li class="sub-menu">
-                    <a href="">
+                    <a href="{{ route('listCategory') }}">
                         <i class="fa fa-book"></i>
                         <span>Quản lý danh mục</span>
                     </a>

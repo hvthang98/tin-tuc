@@ -21,6 +21,7 @@ Route::group(['prefix' => 'admin','namespace'=>'backend'], function () {
     Route::get('/', function () {
         return view('backend.master.master');
     });
+    //user
     Route::group(['prefix' => 'user'], function () {
         Route::get('create','UserController@getCreate')->name('getCreateUser');
         Route::post('post','UserController@postCreate')->name('postCreateUser');
@@ -28,6 +29,13 @@ Route::group(['prefix' => 'admin','namespace'=>'backend'], function () {
         Route::get('delete/{id}','UserController@delete')->name('deleteUser');
         Route::get('edit/{id}','UserController@getEdit')->name('getEditUser');
         Route::post('update/{id}','UserController@update' )->name('updateUser');
+    });
+    //category
+    Route::group(['prefix' => 'category'], function () {
+        Route::get('/', 'CategoryController@getList')->name('listCategory');
+        Route::post('/post','CategoryController@create')->name('createCategory');
+        Route::get('/delete/{id}','CategoryController@delete')->name('deleteCategory');
+        Route::post('update/{id}', 'CategoryController@update')->name('updateCategory');
     });
     
 });
