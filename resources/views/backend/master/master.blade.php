@@ -68,7 +68,11 @@
     <script src="js/jquery.slimscroll.js"></script>
     <script src="js/jquery.nicescroll.js"></script>
     <script src="js/jquery.scrollTo.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--javascrip-->
+    <script>
+    CKEDITOR.replace('editor1');
+</script>
     <script>
         function questionLoading(mes) {
             if (confirm(mes) == false) {

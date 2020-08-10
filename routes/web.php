@@ -17,11 +17,26 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 // backend
-Route::group(['prefix' => 'admin','namespace'=>'backend'], function () {
-    Route::get('/', function () {
-        return view('backend.master.master');
+
+	Route::get('admin/admin-login','backend\UserController@login')->name('admin-login');
+	Route::post('admin/admin-login','backend\UserController@post_login')->name('post-login');
+
+Route::group(['prefix' => 'admin','namespace'=>'backend','middleware'=>'login'], function () {
+	Route::get('/ajax/danhmuc/{id}','AjaxController@category');
+	
+	Route::get('admin-logout','UserController@logout')->name('admin-logout');
+    // Route::get('/', function () {
+    //     return view('backend.master.master');
+    // });
+    //quản lý tin tức
+    Route::group(['prefix' => 'new'], function(){
+
+    	Route::get('add-new', 'NewController@addnew')->name('add-new');
+    	Route::post('add-new', 'NewController@post_addnew')->name('post-new');
     });
+
 });
+
 // fontend
 Route::group(['namespace'=>'fontend'], function () {
     Route::get('/', function () {

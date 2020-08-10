@@ -15,6 +15,8 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->increments('id');
+            
+            $table->integer('users_id')->unsigned();
             $table->string('title');
             $table->string('avatar')->nullable();
             $table->text('summary')->nullable();
@@ -23,10 +25,8 @@ class CreateNewsTable extends Migration
             $table->integer('ordernum')->default(0);
             $table->double('like')->default(0);
             $table->double('view')->default(0);
-            $table->integer('categorys_id')->unsigned();
-            $table->integer('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('categorys_id')->references('id')->on('categorys')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

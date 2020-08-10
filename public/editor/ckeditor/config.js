@@ -9,16 +9,16 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.uiColor = '#AADC6E';
 	//config.filebrowserBrowseUrl = '../../CK_Editor_Finder/ckfinder/ckfinder.html';
 	//config.filebrowserUploadUrl = '../../CK_Editor_Finder/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
-	config.filebrowserBrowseUrl = asset('public/editor/ckfinder/ckfinder.html');
+	config.filebrowserBrowseUrl = 'http://localhost:8080/tin-tuc/public/editor/ckfinder/ckfinder.html';
  
-	config.filebrowserImageBrowseUrl = asset('public/editor/ckfinder/ckfinder.html?type=Images');
+	config.filebrowserImageBrowseUrl = 'http://localhost:8080/tin-tuc/public/editor/ckfinder/ckfinder.html?type=Images';
 	 
-	config.filebrowserFlashBrowseUrl = asset('public/editor/ckfinder/ckfinder.html?type=Flash');
+	config.filebrowserFlashBrowseUrl = 'http://localhost:8080/tin-tuc/public/editor/ckfinder/ckfinder.html?type=Flash';
 	 
-	config.filebrowserUploadUrl = asset('public/editor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files');
+	config.filebrowserUploadUrl = 'http://localhost:8080/tin-tuc/public/editor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
 	 
-	config.filebrowserImageUploadUrl = asset('public/editor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images');
+	config.filebrowserImageUploadUrl = 'http://localhost:8080/tin-tuc/public/editor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
 	 
-	config.filebrowserFlashUploadUrl = asset('public/editor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash');
+	config.filebrowserFlashUploadUrl = 'http://localhost:8080/tin-tuc/public/editor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
 
 };
