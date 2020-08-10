@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->tinyInteger('gender')->default(1);
             $table->date('birthday');
+            $table->string('phone_number');
             $table->string('address');
             $table->integer('level')->default(0);
             $table->tinyInteger('status')->default(1);

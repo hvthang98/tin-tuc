@@ -17,7 +17,7 @@ class LoginMiddleware
     {
         if(Auth::check()){
             
-            if(Auth::user()->level == 1){
+            if(Auth::user()->level == 0){
                 return $next($request);
             }
             else{

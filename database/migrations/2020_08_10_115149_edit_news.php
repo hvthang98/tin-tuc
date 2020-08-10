@@ -27,7 +27,8 @@ class EditNews extends Migration
     public function down()
     {
         Schema::table('news', function (Blueprint $table) {
-            //
+            $table->dropForeign(['categorys_id']);
+            $table->dropColumn('categorys_id');
         });
     }
 }

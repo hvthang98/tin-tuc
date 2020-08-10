@@ -13,33 +13,47 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// backend
 
-	Route::get('admin/admin-login','backend\UserController@login')->name('admin-login');
-	Route::post('admin/admin-login','backend\UserController@post_login')->name('post-login');
 
-Route::group(['prefix' => 'admin','namespace'=>'backend','middleware'=>'login'], function () {
-	Route::get('/ajax/danhmuc/{id}','AjaxController@category');
-	
-	Route::get('admin-logout','UserController@logout')->name('admin-logout');
-    // Route::get('/', function () {
-    //     return view('backend.master.master');
-    // });
-    //quản lý tin tức
-    Route::group(['prefix' => 'new'], function(){
+Route::get('admin/admin-login', 'backend\UserController@login')->name('admin-login');
+Route::post('admin/admin-login', 'backend\UserController@post_login')->name('post-login');
 
-    	Route::get('add-new', 'NewController@addnew')->name('add-new');
-    	Route::post('add-new', 'NewController@post_addnew')->name('post-new');
+Route::group(['prefix' => 'admin', 'namespace' => 'backend', 'middleware' => 'login'], function () {
+    Route::get('/', function () {
+       return view('backend.master.master'); 
+    })->name('indexAdmin');
+    Route::get('/ajax/danhmuc/{id}', 'AjaxController@category');
+    Route::get('admin-logout', 'UserController@logout')->name('admin-logout');
+    Route::group(['prefix' => 'new'], function () {
+        Route::get('add-new', 'NewController@addnew')->name('add-new');
+        Route::post('add-new', 'NewController@post_addnew')->name('post-new');
     });
 
+    //user
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('create', 'UserController@getCreate')->name('getCreateUser');
+        Route::post('post', 'UserController@postCreate')->name('postCreateUser');
+        Route::get('list', 'UserController@getList')->name('listUser');
+        Route::get('delete/{id}', 'UserController@delete')->name('deleteUser');
+        Route::get('edit/{id}', 'UserController@getEdit')->name('getEditUser');
+        Route::post('update/{id}', 'UserController@update')->name('updateUser');
+    });
+    //category
+    Route::group(['prefix' => 'category'], function () {
+        Route::get('/', 'CategoryController@getList')->name('listCategory');
+        Route::post('/post', 'CategoryController@create')->name('createCategory');
+        Route::get('/delete/{id}', 'CategoryController@delete')->name('deleteCategory');
+        Route::post('update/{id}', 'CategoryController@update')->name('updateCategory');
+    });
 });
 
 // fontend
-Route::group(['namespace'=>'fontend'], function () {
+Route::group(['namespace' => 'fontend'], function () {
     Route::get('/', function () {
         return view('fontend.master.master');
     });
+});
+//ajax
+Route::group(['prefix' => 'ajax', 'namespace' => 'ajax'], function () {
+    Route::get('check-user', 'CheckUser@check');
 });

@@ -45,7 +45,7 @@ class NewController extends Controller
     	$news->status = $status;
     	$news->ordernum = $ordernum;
     	$news->save();
-    	return view('backend.master.master',['notification'=>'Thêm thành công']);
+    	return redirect()->route('indexAdmin')->with('notification','Thêm thành công');
 
     }
 }

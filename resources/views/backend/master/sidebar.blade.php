@@ -16,8 +16,8 @@
                         <span>Quản lý User</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="">Tạo user</a></li>
-                        <li><a href="glyphicon.html">Danh sách user</a></li>
+                        <li><a href="{{ route('getCreateUser') }}">Tạo user</a></li>
+                        <li><a href="{{ route('listUser') }}">Danh sách user</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -31,7 +31,7 @@
                     </ul>
                 </li>
                 <li class="sub-menu">
-                    <a href="">
+                    <a href="{{ route('listCategory') }}">
                         <i class="fa fa-book"></i>
                         <span>Quản lý danh mục</span>
                     </a>
