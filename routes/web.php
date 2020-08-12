@@ -45,6 +45,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'backend', 'middleware' => 'lo
         Route::get('/delete/{id}', 'CategoryController@delete')->name('deleteCategory');
         Route::post('update/{id}', 'CategoryController@update')->name('updateCategory');
     });
+    //type-news
+    Route::group(['prefix' => 'type'], function () {
+        Route::get('/','TypeController@getList')->name('listTypeNews');
+        Route::post('/post','TypeController@postType')->name('postTypeNews');
+        Route::get('/delete/{id}', 'TypeController@detele')->name('deleteTypeNews');
+        Route::post('/update/{id}','TypeController@update')->name('updateTypeNews');
+    });
 });
 
 // fontend

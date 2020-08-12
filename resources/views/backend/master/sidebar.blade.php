@@ -31,10 +31,14 @@
                     </ul>
                 </li>
                 <li class="sub-menu">
-                    <a href="{{ route('listCategory') }}">
+                    <a href="javascript:;">
                         <i class="fa fa-book"></i>
-                        <span>Quản lý danh mục</span>
+                        <span>Danh mục và tin tức</span>
                     </a>
+                    <ul class="sub">
+                        <li><a href="{{ route('listCategory') }}">Quản lý danh mục</a></li>
+                        <li><a href="{{ route('listTypeNews') }}">Quản lý loại tin tức</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
