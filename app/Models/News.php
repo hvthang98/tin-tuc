@@ -19,7 +19,12 @@ class News extends Model
 
     public function users(){
 
-    	return $this->belongsTo('App\User','users_id');
+    	return $this->belongsTo('App\Models\Users','users_id');
+
+    }
+    public function comments(){
+
+        return $this->hasMany('App\Models\Comments','news_id');
 
     }
 }

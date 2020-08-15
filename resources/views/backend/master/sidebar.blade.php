@@ -27,7 +27,7 @@
                     </a>
                     <ul class="sub">
                         <li><a href="{{route('add-new')}}">Tạo tin tức mới</a></li>
-                        <li><a href="">Danh sách tin tức</a></li>
+                        <li><a href="{{route('all-news')}}">Danh sách tin tức</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">

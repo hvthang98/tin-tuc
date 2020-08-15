@@ -1,7 +1,4 @@
 @extends('backend.master.master')
-@section('title')
-Thêm tin tức mới
-@endsection
 @section('main-content')
 <div class="form-w3layouts">
     <!-- page start-->
@@ -9,19 +6,20 @@ Thêm tin tức mới
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                    Tạo tin tức mới
+                    Cập nhật tin tức 
                 </header>
                 <div class="panel-body">
-                	@include('notification.error')
                     <div class="form">
+
                         <form class="cmxform form-horizontal " id="" method="post"
-                            action="{{route('post-new')}}"  enctype="multipart/form-data">
+                            action="{{route('post-edit-new',['id'=>$news->id])}}"  enctype="multipart/form-data">
                             @csrf
                             
+                            
                             <div class="form-group ">
-                                <label for="name" class="control-label col-lg-3">Thêm tiêu đề tin tức</label>
+                                <label for="name" class="control-label col-lg-3">Cập nhật tiêu đề tin tức</label>
                                 <div class="col-lg-6">
-                                    <input class=" form-control" id="name" name="title" type="text" 
+                                    <input class=" form-control" id="name" name="title" type="text" value="{{$news->title}}" 
                                         oninvalid="this.setCustomValidity('Không được để trống')"
                                         oninput="this.setCustomValidity('')">
                                 </div>
@@ -31,7 +29,7 @@ Thêm tin tức mới
                                 <div class="col-lg-6">
                                     <select class="form-control m-bot15" id="danhmuc" name="categorys">
                                         @foreach($categories as $cat)
-                                                <option value="{{$cat->id}}" >{{$cat->name}}</option>
+                                                <option value="{{$cat->id}}" <?php if($news->categorys_id == $cat->id) echo 'selected="selected"'; ?> >{{$cat->name}}</option>
                                          @endforeach
                                     </select>
                                 </div>
@@ -41,7 +39,7 @@ Thêm tin tức mới
                                 <div class="col-lg-6">
                                     <select class="form-control m-bot15" id="loaitin" name="type_news">
                                         @foreach($typenews as $type)
-                                                <option value="{{$type->id}}" >{{$type->type_name}}</option>
+                                                <option value="{{$type->id}}" <?php if($news->type_news_id == $type->id) echo 'selected="selected"'; ?> >{{$type->type_name}}</option>
                                          @endforeach
                                     </select>
                                 </div>
@@ -57,27 +55,29 @@ Thêm tin tức mới
                                 </div>
                             </div>
                             <div class="form-group ">
+                            	<img style="margin-left: -490px; margin-top: 39px;" src="../../public/images/{{$news->avatar}}" width="200" height="200">
                                 <label for=" file" class="control-label col-lg-3">Hình ảnh đại diện</label>
+
                                 <div class="col-lg-6">
-                                    <input type="file" name="avatar">
+                                    <input type="file" name="avatar" >
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label for=" mota" class="control-label col-lg-3">Thêm mô tả tin tức</label>
                                 <div class="col-lg-6">
-                                    <textarea  id="editor1" name="summary" cols="10"></textarea>
+                                    <textarea  id="editor1" name="summary" cols="10">{!!$news->summary!!}</textarea>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label for=" content" class="control-label col-lg-3">Thêm nội dung tin tức</label>
                                 <div class="col-lg-6">
-                                    <textarea class="ckeditor" id="content" name="content" ></textarea>
+                                    <textarea class="ckeditor" id="content" name="content" >{!!$news->content!!}</textarea>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <label for=" order" class="control-label col-lg-3">Order Num</label>
                                 <div class="col-lg-6">
-                                    <input class=" form-control" type="text" id="order" name="ordernum" 
+                                    <input class=" form-control" type="text" id="order" name="ordernum" value="{{$news->ordernum}}" 
                                         oninvalid="this.setCustomValidity('Không được để trống')"
                                         oninput="this.setCustomValidity('')">
                                 </div>
@@ -88,14 +88,23 @@ Thêm tin tức mới
                                 <label for="sellprice" class="control-label col-lg-3">Trạng thái</label>
                                 <div class="col-lg-6">
                                     <label>
-                                        <input type="radio" name="status" id="" value="1" checked="checked">
+                                        <input type="radio" name="status" id="" value="1" <?php 
+                                        	if($news->status == 1){
+                                        		echo 'checked = "checked"';
+                                        	}
+                                         ?> >
                                         Hiện
-                                        <input type="radio" name="status" id="" value="0">
+                                        <input type="radio" name="status" id="" value="0"
+                                        <?php 
+                                        	if($news->status == 0){
+                                        		echo 'checked = "checked"';
+                                        	}
+                                         ?>>
                                         Ẩn
                                     </label>
                                 </div>
                             </div>
-
+							
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">
                                     <button class="btn btn-primary" type="submit">Tạo tin tức</button>
@@ -127,15 +136,6 @@ Thêm tin tức mới
 				}
 				);
 		});
-        
 	});
 </script>
-@if(session()->has('error'))
-<script type="text/javascript">
-	var error = "{{session()->get('error')}}";
-	alert(error);
-</script>
-@endif
 @endsection
-
-

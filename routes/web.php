@@ -22,11 +22,19 @@ Route::group(['prefix' => 'admin', 'namespace' => 'backend', 'middleware' => 'lo
     Route::get('/', function () {
        return view('backend.master.master'); 
     })->name('indexAdmin');
+
+    //news
     Route::get('/ajax/danhmuc/{id}', 'AjaxController@category');
+
+    
     Route::get('admin-logout', 'UserController@logout')->name('admin-logout');
     Route::group(['prefix' => 'new'], function () {
         Route::get('add-new', 'NewController@addnew')->name('add-new');
         Route::post('add-new', 'NewController@post_addnew')->name('post-new');
+        Route::get('all-news','NewController@all_news')->name('all-news');
+        Route::get('edit-new/{id}','NewController@edit_new')->name('edit-new');
+        Route::post('edit-new/{id}','NewController@post_edit_new')->name('post-edit-new');
+        Route::get('delete-new/{id}','NewController@delete_new')->name('delete-new');
     });
 
     //user
@@ -52,8 +60,11 @@ Route::group(['namespace' => 'fontend'], function () {
     Route::get('/', function () {
         return view('fontend.master.master');
     });
+    Route::get('/sigle-new/{id}','DetailNewController@index')->name('sigle');
 });
 //ajax
 Route::group(['prefix' => 'ajax', 'namespace' => 'ajax'], function () {
     Route::get('check-user', 'CheckUser@check');
+    Route::get('/like/{id}','LikeController@like');
+    Route::get('/comment/{id}','CommentController@comment');
 });
