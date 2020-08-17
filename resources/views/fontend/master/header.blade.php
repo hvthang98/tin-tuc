@@ -8,7 +8,7 @@
                     <div class="top-header-content d-flex align-items-center justify-content-between">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="index.html"><img src="logo/logo3.png" alt="" style="width: 90%;height: 135px;"></a>
+                            <a href="{{ route('indexHome') }}"><img src="logo/logo3.png" alt="" style="width: 90%;height: 135px;"></a>
                         </div>
 
                         <!-- Login Search Area -->

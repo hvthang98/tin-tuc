@@ -56,9 +56,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'backend', 'middleware' => 'lo
 
 // fontend
 Route::group(['namespace' => 'fontend'], function () {
-    Route::get('/', function () {
-        return view('fontend.master.master');
-    });
+    Route::get('/','HomeController@index')->name('indexHome');
 });
 //ajax
 Route::group(['prefix' => 'ajax', 'namespace' => 'ajax'], function () {

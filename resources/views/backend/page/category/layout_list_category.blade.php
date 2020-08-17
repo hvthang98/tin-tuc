@@ -89,7 +89,7 @@ Quản lý danh mục
                             </table>
                         </div>
                         <footer class="panel-footer">
-
+                            {{ $categories->links() }}
                         </footer>
                     </div>
                 </div>

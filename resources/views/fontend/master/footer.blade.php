@@ -1,3 +1,17 @@
+<!-- ##### Footer Add Area Start ##### -->
+<div class="footer-add-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="footer-add">
+                    <a href="#"><img src="img/bg-img/footer-add.gif" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Footer Add Area End ##### -->
+<!-- ##### Footer Area Start ##### -->
 <footer class="footer-area">
 
     <!-- Main Footer Area -->
@@ -100,9 +114,14 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <!-- Copywrite -->
-                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>
+                            document.write(new Date().getFullYear());
+
+                        </script> All rights reserved
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
                 </div>
             </div>
         </div>
