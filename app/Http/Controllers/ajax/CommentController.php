@@ -17,9 +17,13 @@ class CommentController extends Controller
     	$comment->news_id = $id;
     	$comment->content = $content;
     	$comment->save();
-    	 //$com = Comments::where('users_id', $users_id)->where('news_id',$news_id)->get()->last();//lỗi chỗ này nè
-    	// 	echo $com->content;
-    		return view('ajax.comment')->with('com',$comment);
+    	if($comment->save()){
+    	 $com = Comments::where('users_id','=',$users_id)->orderBy('created_at','desc')->first();
+    	 return view('ajax.comment')->with('com',$com);
+    	 
+    	}
+    	 	
+    		
     	
     	
     }

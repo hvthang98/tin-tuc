@@ -96,8 +96,10 @@
                         </div>
                         
                         <!-- Comment Area Start -->
+                        
+                        
                         <div class="comment_area clearfix">
-                            <h5 class="title">3 Bình luận</h5>
+                            <h5 class="title">{{$ne->comments->count()}} Bình luận</h5>
 
                             <ol id="ol1">
                                 @foreach($ne->comments as $com)
@@ -111,30 +113,64 @@
                                         <!-- Comment Meta -->
                                         <div class="comment-meta">
                                             <a href="#" class="post-author">{{$com->users->name}}</a>
-                                            <a href="#" class="post-date">{{$com->created_at}}</a>
+                                            <a href="#" class="post-date">Gửi vào: {{$com->created_at}}</a>
                                             <p>{{$com->content}}</p>
                                         </div>
 
                                     </div>
-                                    <div class="rep" >Phản hồi
-                                        <input id="{{$com->id}}" type="hidden" name="">
+                                    
+                                
+                                    <!-- phản hồi bình luận -->
+                                    <?php $replies = $com->reply_comments()->where('comments_id','=', $com->id)->get() ?>
+                                    <div class="showreply">
+                                    <div class="notifi-reply">
+                                        @if(count($replies)!= 0)
+                                        <span class="notifi" style="margin-left: 100px;"> Có {{count($replies)}} phản hồi</span>
+                                    
+                                    </div>
+                                    <div class="area-replies">
+                                    
+                                    <ol  class="children" id="replycom{{$com->id}}">
+                                        @foreach($replies as $reply)
+                                        <li class="single_comment_area">
+                                            <!-- Comment Content -->
+                                            <div class="comment-content d-flex">
+                                                <!-- Comment Author -->
+                                                <div class="comment-author">
+                                                    <img src="img/bg-img/31.jpg" alt="author">
+                                                </div>
+                                                <!-- Comment Meta -->
+                                                <div class="comment-meta">
+                                                    <a href="#" class="post-author">{{$reply->users->name}}</a>
+                                                    <a href="#" class="post-date">Đã gửi lúc:  {{$reply->created_at}}</a>
+                                                    <p>{{$reply->content}}</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @endforeach
+                                    </ol>
+                                    </div>
+                                    
+                                    
+                                    @endif
+                                    <div class="rep"  >
+                                         <span style="margin-left: 100px;width: 100px">Phản hồi</span>
                                         <div class="reply" class="contact-form-area">
                                     
                                         <div class="row">
                                             
                                             <div class="col-12">
-                                                <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                                <input class="comments_id"  type="hidden" value="{{$com->id}}" name="">
+                                                <textarea id="textarea{{$com->id}}" style="margin-left: 100px;" name="message" class="form-contro"   cols="102" rows="5" placeholder="Message"></textarea>
                                             </div>
-                                            <div class="col-12 text-center">
-                                                <button id="sendreply" class="btn newspaper-btn mt-30 w-100" >Submit Comment</button>
+                                            <div class="send-reply">
+                                                <button style="margin-left: 100px;"  class="btn newspaper-btn mt-30 w-100" >Gửi phản hồi</button>
                                             </div>
                                         </div>
                                     
                                 </div>
                                 </div>
-                                
-                                    <!-- phản hồi bình luận -->
-                                    
+                                </div>
                                      <!-- Kết thúc phản hồi bình luận -->
                                 </li>
                             
@@ -157,7 +193,7 @@
                                     <div class="row">
                                         
                                         <div class="col-12">
-                                            <textarea name="comment" class="form-control" id="comment_text" cols="30" rows="10" placeholder="Ý kiến của bạn"></textarea>
+                                            <textarea name="comment"  id="comment_text" cols="102" rows="5" placeholder="Ý kiến của bạn"></textarea>
                                         </div>
                                         <div class="col-12 text-center">
                                             <button id="subcomment" class="btn newspaper-btn mt-30 w-100" >Gửi bình luận</button>
@@ -373,11 +409,14 @@
             </div>
         </div>
     </div>
+
+
     <script type="text/javascript">
         $(document).ready(function(){
             
             
            var a = $("#new_id").attr('value');
+
             $("#like").on('click',function(){
                 if(checklogin() == false){
                 alert('Bạn chưa đăng nhập');
@@ -421,7 +460,7 @@
                 if(checklogin() == false){
                 var con =  confirm('Để bình luận bạn phải đăng nhập. Bạn có muốn chuyển sang trang đăng nhập ?');
                     if(con == true){
-                    $(location).attr('href', 'http://www.hoclaptrinh.org')
+                    $(location).attr('href', 'http://www.facebook.com')
                     }
             }
                 
@@ -442,7 +481,7 @@
                 }
              });
 
-             $("#comment_text").on('click',function(){
+             $("#comment_text, .form-contro").on('click',function(){
                 
                 if(checklogin() == false){
                 var con =  confirm('Để bình luận bạn phải đăng nhập. Bạn có muốn chuyển sang trang đăng nhập ?');
@@ -469,6 +508,52 @@
 
                         function(data1){
                            $("#ol1").append(data1);
+                           $("#comment_text").val(" ");
+                           alert('Đã gửi bình luận thành công');
+
+                        }
+
+                        );
+
+                    }
+                }
+             });
+
+             $(".area-replies").hide();
+             $(".notifi-reply").on('click',function(){
+                
+                $(this).parent().find(".area-replies").show();
+             });
+
+             $(".notifi").on('click', function(){$(this).hide();});
+
+             $(".send-reply").on('click',function(){
+                
+                if(checklogin() == false){
+                    alert("Bạn chưa đăng nhập");
+                }
+                else if(checklogin() == true){
+                    var reply = $(this).parent().find("textarea").val();
+                    
+                    var comments_id = $(this).parent().find(".comments_id").val();
+
+                        reply = $.trim(reply);
+                        
+                    if(reply == ''){
+                        alert("Bạn chưa điền bình luận");
+                    }
+                    else{
+                        $.get(
+                        "http://localhost:8080/tin-tuc/ajax/reply-comment/"+comments_id,
+                        { content : reply },
+
+                        function(data){
+                            var list = '#replycom'+comments_id;
+                            var textarea = '#textarea'+comments_id;
+                             $(list).append(data);
+                             $(textarea).val('');
+                           alert('Đã gửi phản hồi thành công');
+
                         }
 
                         );
@@ -478,7 +563,9 @@
              });
             
             
-        })
+        });
+
+        
     </script>
     @endsection
     <!-- ##### Blog Area End ##### -->

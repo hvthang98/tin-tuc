@@ -18,4 +18,7 @@ class Comments extends Model
 
     	return $this->belongsTo('App\Models\News', 'categorys_id');
     }
+    public function reply_comments(){
+    	return $this->hasMany('App\Models\ReplyComments','comments_id');
+    }
 }

@@ -67,4 +67,5 @@ Route::group(['prefix' => 'ajax', 'namespace' => 'ajax'], function () {
     Route::get('check-user', 'CheckUser@check');
     Route::get('/like/{id}','LikeController@like');
     Route::get('/comment/{id}','CommentController@comment');
+    Route::get('/reply-comment/{id}','ReplyCommentController@reply');
 });

@@ -8,7 +8,7 @@
                                         <!-- Comment Meta -->
                                         <div class="comment-meta">
                                             <a href="#" class="post-author">{{Auth::user()->name}}</a>
-                                            <a href="#" id="date" class="post-date"></a>
+                                            <a href="#" id="date" class="post-date">{{$com->created_at}}</a>
                                             <p>{{$com->content}}</p>
                                         </div>
 
@@ -32,11 +32,4 @@
                                     
                                      <!-- Kết thúc phản hồi bình luận -->
                                 </li>
-                                <script type="text/javascript">
-
-                                   var today = new Date();
-                                   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-
-                                   document.getElementById("date").innerHTML = time;
-
-                               </script>
+                                
