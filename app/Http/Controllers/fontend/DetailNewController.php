@@ -29,11 +29,6 @@ class DetailNewController extends Controller
 		    	 	session()->put($sessionview,0);
 		    	 	
     	 		}
-    	
-    		
-    	
-    
-    	
     	return view('fontend.pages.news.detail-new')->with('new',$new)->with('othernew',$othernew);
     }
 }

@@ -27,7 +27,8 @@ class EditTblComments extends Migration
     public function down()
     {
         Schema::table('comments', function (Blueprint $table) {
-            //
+            $table->dropForeign(['news_id']);
+            $table->dropColumn('news_id');
         });
     }
 }
