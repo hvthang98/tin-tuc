@@ -1,5 +1,4 @@
 <header class="header-area">
-
     <!-- Top Header Area -->
     <div class="top-header-area">
         <div class="container">
@@ -60,7 +59,7 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li class="active"><a href="index.html">Home</a></li>
+                                <li class="active"><a href="{{ route('indexHome') }}">Home</a></li>
                                 <li><a href="#">Pages</a>
                                     <ul class="dropdown">
                                         <li><a href="index.html">Home</a></li>

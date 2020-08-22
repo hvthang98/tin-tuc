@@ -15,7 +15,6 @@ class HomeController extends Controller
         $data['newsTravel'] = News::where('status', 1)->where('categorys_id', 4)->orderBy('created_at', 'desc')->get();
         $data['newsSports'] = News::where('status', 1)->where('categorys_id', 5)->orderBy('created_at', 'desc')->limit(9)->get();
         $data['hotSports'] = News::where('status', 1)->where('categorys_id', 5)->where('created_at','>=',$lastDay)->where('created_at','<=',date('Y-m-d H:i:s'))->orderBy('view','desc')->limit(5)->get();
-        // dd($data['hotSports']);
-        return view('fontend.page.home', $data);
+        return view('fontend.pages.home', $data);
     }
 }

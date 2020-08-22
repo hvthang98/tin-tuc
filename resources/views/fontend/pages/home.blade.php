@@ -55,11 +55,11 @@
                     <div class="col-12 col-lg-7">
                         <div class="single-blog-post featured-post">
                             <div class="post-thumb">
-                                <a href="#"><img src="{{ $newsNew[0]->avatar }}" alt=""></a>
+                                <a href="{{ route('sigle',$newsNew[0]->id) }}"><img src="{{ $newsNew[0]->avatar }}" alt=""></a>
                             </div>
                             <div class="post-data">
-                                <a href="#" class="post-catagory">{{ $newsNew[0]->categorys->name }}</a>
-                                <a href="#" class="post-title">
+                                <a href="{{ route('sigle',$newsNew[0]->id) }}" class="post-catagory">{{ $newsNew[0]->categorys->name }}</a>
+                                <a href="{{ route('sigle',$newsNew[0]->id) }}" class="post-title">
                                     <h6>{{ $newsNew[0]->title }}</h6>
                                 </a>
                                 <div class="post-meta">
@@ -67,9 +67,9 @@
                                     <p class="post-excerp">{{ $newsNew[0]->summary }}</p>
                                     <!-- Post Like & Post Comment -->
                                     <div class="d-flex align-items-center">
-                                        <a href="#" class="post-like"><img src="img/core-img/like.png" alt="">
+                                        <a href="{{ route('sigle',$newsNew[0]->id) }}" class="post-like"><img src="img/core-img/like.png" alt="">
                                             <span>392</span></a>
-                                        <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt="">
+                                        <a href="{{ route('sigle',$newsNew[0]->id) }}" class="post-comment"><img src="img/core-img/chat.png" alt="">
                                             <span>10</span></a>
                                     </div>
                                 </div>
@@ -84,19 +84,19 @@
                         @foreach($newsMiddle as $news)
                             <div class="single-blog-post featured-post-2">
                                 <div class="post-thumb">
-                                    <a href="#"><img src="{{ $news->avatar }}" alt=""></a>
+                                    <a href="{{ route('sigle',$news->id) }}"><img src="{{ $news->avatar }}" alt=""></a>
                                 </div>
                                 <div class="post-data">
-                                    <a href="#" class="post-catagory">{{ $news->categorys->name }}</a>
+                                    <a href="{{ route('sigle',$news->id) }}" class="post-catagory">{{ $news->categorys->name }}</a>
                                     <div class="post-meta">
-                                        <a href="#" class="post-title">
+                                        <a href="{{ route('sigle',$news->id) }}" class="post-title">
                                             <h6>{{ $news->title }}</h6>
                                         </a>
                                         <!-- Post Like & Post Comment -->
                                         <div class="d-flex align-items-center">
-                                            <a href="#" class="post-like"><img src="img/core-img/like.png" alt="">
+                                            <a href="{{ route('sigle',$news->id) }}" class="post-like"><img src="img/core-img/like.png" alt="">
                                                 <span>392</span></a>
-                                            <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt="">
+                                            <a href="{{ route('sigle',$news->id) }}" class="post-comment"><img src="img/core-img/chat.png" alt="">
                                                 <span>10</span></a>
                                         </div>
                                     </div>
@@ -116,12 +116,12 @@
                 @foreach($newsRight as $news)
                     <div class="single-blog-post small-featured-post d-flex">
                         <div class="post-thumb">
-                            <a href="#"><img src="{{ $news->avatar }}" alt=""></a>
+                            <a href="{{ route('sigle',$news->id) }}"><img src="{{ $news->avatar }}" alt=""></a>
                         </div>
                         <div class="post-data">
-                            <a href="#" class="post-catagory">{{ $news->categorys->name }}</a>
+                            <a href="{{ route('sigle',$news->id) }}" class="post-catagory">{{ $news->categorys->name }}</a>
                             <div class="post-meta">
-                                <a href="#" class="post-title">
+                                <a href="{{ route('sigle',$news->id) }}" class="post-title">
                                     <h6>{{ $news->title }}</h6>
                                 </a>
                                 <p class="post-date">
@@ -156,17 +156,17 @@
                         <div class="col-12 col-md-4">
                             <div class="single-blog-post style-3">
                                 <div class="post-thumb">
-                                    <a href="#"><img src="{{ $travel->avatar }}" alt=""></a>
+                                    <a href="{{ route('sigle',$travel->id) }}"><img src="{{ $travel->avatar }}" alt=""></a>
                                 </div>
                                 <div class="post-data">
-                                    <a href="#" class="post-catagory">{{ $travel->categorys->name }}</a>
-                                    <a href="#" class="post-title">
+                                    <a href="{{ route('sigle',$travel->id) }}" class="post-catagory">{{ $travel->categorys->name }}</a>
+                                    <a href="{{ route('sigle',$travel->id) }}" class="post-title">
                                         <h6>{{ $travel->title }}</h6>
                                     </a>
                                     <div class="post-meta d-flex align-items-center">
-                                        <a href="#" class="post-like"><img src="img/core-img/like.png" alt="">
+                                        <a href="{{ route('sigle',$travel->id) }}" class="post-like"><img src="img/core-img/like.png" alt="">
                                             <span>392</span></a>
-                                        <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt="">
+                                        <a href="{{ route('sigle',$travel->id) }}" class="post-comment"><img src="img/core-img/chat.png" alt="">
                                             <span>10</span></a>
                                     </div>
                                 </div>
@@ -296,15 +296,15 @@
                         <div class="col-12 col-lg-4">
                             <div class="single-blog-post">
                                 <div class="post-thumb">
-                                    <a href="#"><img src="{{ $sport->avatar }}" alt=""></a>
+                                    <a href="{{ route('sigle',$sport->id) }}"><img src="{{ $sport->avatar }}" alt=""></a>
                                 </div>
                                 <div class="post-data">
-                                    <a href="#" class="post-title">
+                                    <a href="{{ route('sigle',$sport->id) }}" class="post-title">
                                         <h6>{{ $sport->title }}</h6>
                                     </a>
                                     <div class="post-meta">
                                         <div class="post-date"><a
-                                                href="#">{{ date('d/m/y',strtotime($sport->created_at)) }}</a>
+                                                href="{{ route('sigle',$sport->id) }}">{{ date('d/m/y',strtotime($sport->created_at)) }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -323,14 +323,14 @@
                     <!-- Single Post -->
                     <div class="single-blog-post style-2">
                         <div class="post-thumb">
-                            <a href="#"><img src="{{ $hot->avatar }}" alt=""></a>
+                            <a href="{{ route('sigle',$hot->id) }}"><img src="{{ $hot->avatar }}" alt=""></a>
                         </div>
                         <div class="post-data">
-                            <a href="#" class="post-title">
+                            <a href="{{ route('sigle',$hot->id) }}" class="post-title">
                                 <h6>{{ $hot->title }}</h6>
                             </a>
                             <div class="post-meta">
-                                <div class="post-date"><a href="#">{{ date('d/m/y',strtotime($hot->created_at)) }}</a></div>
+                                <div class="post-date"><a href="{{ route('sigle',$hot->id) }}">{{ date('d/m/y',strtotime($hot->created_at)) }}</a></div>
                             </div>
                         </div>
                     </div>

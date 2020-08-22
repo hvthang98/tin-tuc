@@ -192,7 +192,7 @@
         <!--search & user info start-->
         <ul class="nav pull-right top-menu">
             <li>
-                <input type="text" class="form-control search" placeholder=" Search">
+                <input id="search" type="text" class="form-control search" placeholder=" Search">
             </li>
             <!-- user login dropdown start-->
             <li class="dropdown">
@@ -211,5 +211,18 @@
         </ul>
         <!--search & user info end-->
     </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#search").change(function(){
+                var search = $(this).val();
+                $.get(
+                    "http://localhost:8080/tin-tuc/admin/ajax/search/"+search, 
+                    function(data){
+                        $("#tab").html(data);
+                    }    
+                    )
+            })
+        })
+    </script>
 </header>
 <!--header end-->

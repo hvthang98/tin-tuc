@@ -11,5 +11,8 @@ class Users extends Model
     function news(){
     	return $this->hasMany('App\Models\News', 'users_id');
     }
+    function reply_comments(){
+    	return $this->hasMany('App\Models\ReplyComments','users_id');
+    }
     
 }
