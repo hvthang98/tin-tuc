@@ -76,7 +76,7 @@ Quản lý danh mục
                                         </td>
                                         <td>
                                             <i class="fa fa-edit style-icon edit" data-name="{{ $category->name }}"
-                                                data-id="{{ $category->id }}">
+                                                data-id="{{ $category->id }}" data-status="{{ $category->status }}">
                                             </i>
                                             <a
                                                 href="{{ route('deleteCategory',$category->id) }}"><i
@@ -116,13 +116,13 @@ Quản lý danh mục
                         <div class="form-group">
                             <label for="exampleInputEmail1">Trạng thái</label>
                             <div class="radio">
-                                <label>
+                                <label class="status-show">
                                     <input type="radio" name="status" id="" value="1" checked>
                                     Hiện
                                 </label>
                             </div>
                             <div class="radio">
-                                <label>
+                                <label class="status-hide">
                                     <input type="radio" name="status" id="" value="0">
                                     Ẩn
                                 </label>
@@ -149,6 +149,14 @@ Quản lý danh mục
         showForm.show();
         $('.show-form .form-edit').attr('value', name);
         $('#form-category').attr('action', url + id);
+        let status = parseInt(this.dataset.status);
+        let statusShow = '<input type="radio" name="status" id="" value="1"' + 'checked' + '>Hiện';
+        let statusHide = '<input type="radio" name="status" id="" value="0"' + 'checked' + '>Ẩn';
+        if (status == 1) {
+            $('.status-show').html(statusShow);
+        } else {
+            $('.status-hide').html(statusHide);
+        }
     });
 
 </script>
