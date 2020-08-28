@@ -27,4 +27,7 @@ class News extends Model
         return $this->hasMany('App\Models\Comments','news_id');
 
     }
+    public function tags(){
+        return $this->belongstoMany('App\Models\Tags','new_tags','news_id','tags_id');
+    }
 }

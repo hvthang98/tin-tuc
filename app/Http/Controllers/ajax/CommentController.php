@@ -18,8 +18,8 @@ class CommentController extends Controller
     	$comment->content = $content;
     	$comment->save();
     	if($comment->save()){
-    	 $com = Comments::where('users_id','=',$users_id)->orderBy('created_at','desc')->first();
-    	 return view('ajax.comment')->with('com',$com);
+    	 
+    	 return view('ajax.comment')->with('com',$comment);
     	 
     	}
     	 	

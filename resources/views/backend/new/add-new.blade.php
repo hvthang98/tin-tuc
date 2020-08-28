@@ -74,6 +74,23 @@ Thêm tin tức mới
                                     <textarea class="ckeditor" id="content" name="content"></textarea>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-3">Nhập vào tag cho tin tức</label>
+                                <select name="tags[]" class="form-control multi-tag" style="width: 500px" multiple="multiple" >
+
+                            </select>
+
+                        <script type="text/javascript">
+
+                            $(".multi-tag").select2({
+                                tags: true,
+                                tokenSeparators: [',']
+                            })
+
+
+                        </script>
+                                
+                            </div>
                             <div class="form-group ">
                                 <label for=" order" class="control-label col-lg-3">Order Num</label>
                                 <div class="col-lg-6">
@@ -95,6 +112,8 @@ Thêm tin tức mới
                                     </label>
                                 </div>
                             </div>
+                            
+                            
 
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">
@@ -111,24 +130,9 @@ Thêm tin tức mới
         </div>
     </div>
     <!-- page end-->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#danhmuc").change(function () {
-                var danhmuc = $(this).val();
-                $.get(
-                    "http://localhost:8080/tin-tuc/admin/ajax/danhmuc/" + danhmuc,
-    
-                    function (data) {
-                        $("#loaitin").html(data);
-                    }
-                );
-            });
-        });
-    </script>
+   
 </div>
-<<<<<<< HEAD
-@endsection
-=======
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#danhmuc").change(function(){
@@ -155,4 +159,4 @@ Thêm tin tức mới
 @endsection
 
 
->>>>>>> update-replycomment
+

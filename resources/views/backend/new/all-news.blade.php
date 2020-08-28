@@ -24,7 +24,7 @@
             <?php $i = 1; ?>
                 @foreach($news as $new)
                     <tr>
-                        <td><?php echo $i++; ?></td>
+                        <td>{{$new->id}}</td>
                         <td>{{ $new->title }}</td>
                         <td>{{ $new->type_name }}</td>
                         <td>{{ $new->name }}</td>

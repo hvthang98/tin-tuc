@@ -74,6 +74,29 @@
                                     <textarea class="ckeditor" id="content" name="content" >{!!$news->content!!}</textarea>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-3">Nhập vào tag cho tin tức</label>
+                                <select name="tags[]" class="form-control multi-tag" multiple="multiple" style="width: 500px"  >
+                                   
+                                   @foreach($news->tags as $ta)
+
+                                   <option value="{{$ta->tag_name}}"  selected="selected">{{$ta->tag_name}}</option>
+                                   
+                                   @endforeach 
+
+                            </select>
+
+                        <script type="text/javascript">
+
+                            $(".multi-tag").select2({
+                                tags: true,
+                                tokenSeparators: [',']
+                            })
+
+
+                        </script>
+                                
+                            </div>
                             <div class="form-group ">
                                 <label for=" order" class="control-label col-lg-3">Order Num</label>
                                 <div class="col-lg-6">

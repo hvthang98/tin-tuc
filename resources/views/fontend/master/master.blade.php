@@ -28,7 +28,7 @@
 
     <!-- ##### Footer Area Start ##### -->
     @include('fontend.master.footer')
-
+    @include('notification.notification');
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>

@@ -21,8 +21,8 @@ class ReplyCommentController extends Controller
 
     	if($reply->save()){
     		
-    		$replycomment = ReplyComments::where('users_id',$users_id)->orderBy('created_at','desc')->first();
-    		return view('ajax.replycomment')->with('reply',$replycomment);
+    		
+    		return view('ajax.replycomment')->with('reply',$reply);
     	}
 
     }

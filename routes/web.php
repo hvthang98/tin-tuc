@@ -66,6 +66,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'backend', 'middleware' => 'lo
 Route::group(['namespace' => 'fontend'], function () {
     Route::get('/','HomeController@index')->name('indexHome');
     Route::get('/sigle-new/{id}','DetailNewController@index')->name('sigle');
+
+    //sign-in
+    Route::get('/login-user','UserController@login')->name('login-user');
+    Route::post('/login-user','UserController@post_login')->name('post-login-user');
+    Route::get('/signup-user','UserController@signup')->name('signup-user');
+    Route::post('signup-user','UserController@post_signup')->name('post-signup-user');
+
+    //search
+    Route::post('search-new','SearchNewController@search')->name('search-new');
+
 });
 //ajax
 Route::group(['prefix' => 'ajax', 'namespace' => 'ajax'], function () {

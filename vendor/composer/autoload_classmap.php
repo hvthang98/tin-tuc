@@ -10,20 +10,18 @@ return array(
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\ajax\\CheckUser' => $baseDir . '/app/Http/Controllers/ajax/CheckUser.php',
-<<<<<<< HEAD
-=======
+    'App\\Http\\Controllers\\ajax\\CommentController' => $baseDir . '/app/Http/Controllers/ajax/CommentController.php',
     'App\\Http\\Controllers\\ajax\\LikeController' => $baseDir . '/app/Http/Controllers/ajax/LikeController.php',
->>>>>>> update-replycomment
+    'App\\Http\\Controllers\\ajax\\ReplyCommentController' => $baseDir . '/app/Http/Controllers/ajax/ReplyCommentController.php',
     'App\\Http\\Controllers\\backend\\AjaxController' => $baseDir . '/app/Http/Controllers/backend/AjaxController.php',
     'App\\Http\\Controllers\\backend\\CategoryController' => $baseDir . '/app/Http/Controllers/backend/CategoryController.php',
     'App\\Http\\Controllers\\backend\\NewController' => $baseDir . '/app/Http/Controllers/backend/NewController.php',
     'App\\Http\\Controllers\\backend\\TypeController' => $baseDir . '/app/Http/Controllers/backend/TypeController.php',
     'App\\Http\\Controllers\\backend\\UserController' => $baseDir . '/app/Http/Controllers/backend/UserController.php',
-<<<<<<< HEAD
-    'App\\Http\\Controllers\\fontend\\HomeController' => $baseDir . '/app/Http/Controllers/fontend/HomeController.php',
-=======
     'App\\Http\\Controllers\\fontend\\DetailNewController' => $baseDir . '/app/Http/Controllers/fontend/DetailNewController.php',
->>>>>>> update-replycomment
+    'App\\Http\\Controllers\\fontend\\HomeController' => $baseDir . '/app/Http/Controllers/fontend/HomeController.php',
+    'App\\Http\\Controllers\\fontend\\SearchNewController' => $baseDir . '/app/Http/Controllers/fontend/SearchNewController.php',
+    'App\\Http\\Controllers\\fontend\\UserController' => $baseDir . '/app/Http/Controllers/fontend/UserController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -36,16 +34,15 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\CreateCategoryReq' => $baseDir . '/app/Http/Requests/CreateCategoryReq.php',
     'App\\Http\\Requests\\CreateUserRequest' => $baseDir . '/app/Http/Requests/CreateUserRequest.php',
-<<<<<<< HEAD
-=======
     'App\\Http\\Requests\\NewsRequest' => $baseDir . '/app/Http/Requests/NewsRequest.php',
->>>>>>> update-replycomment
     'App\\Http\\Requests\\UpdateCategoryReq' => $baseDir . '/app/Http/Requests/UpdateCategoryReq.php',
     'App\\Http\\Requests\\UpdateUserRequest' => $baseDir . '/app/Http/Requests/UpdateUserRequest.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\Categorys' => $baseDir . '/app/Models/Categorys.php',
+    'App\\Models\\Comments' => $baseDir . '/app/Models/Comments.php',
     'App\\Models\\DetailLike' => $baseDir . '/app/Models/DetailLike.php',
     'App\\Models\\News' => $baseDir . '/app/Models/News.php',
+    'App\\Models\\ReplyComments' => $baseDir . '/app/Models/ReplyComments.php',
     'App\\Models\\Typenews' => $baseDir . '/app/Models/Typenews.php',
     'App\\Models\\Users' => $baseDir . '/app/Models/Users.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
@@ -146,7 +143,6 @@ return array(
     'Carbon\\Traits\\Units' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Units.php',
     'Carbon\\Traits\\Week' => $vendorDir . '/nesbot/carbon/src/Carbon/Traits/Week.php',
     'Carbon\\Translator' => $vendorDir . '/nesbot/carbon/src/Carbon/Translator.php',
-    'CategorySeed' => $baseDir . '/database/seeds/CategorySeed.php',
     'Cron\\AbstractField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
     'Cron\\DayOfMonthField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -4344,7 +4340,6 @@ return array(
     'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
     'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
     'TypeError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
-    'TypeNewsSeed' => $baseDir . '/database/seeds/TypeNewsSeed.php',
     'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     'Webmozart\\Assert\\Assert' => $vendorDir . '/webmozart/assert/src/Assert.php',

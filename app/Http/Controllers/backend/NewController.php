@@ -9,11 +9,14 @@ use App\Models\News;
 use App\Models\Categorys;
 use App\Models\Users;
 use App\Models\Typenews;
+use App\Models\Tags;
+use App\Models\NewTags;
 use Illuminate\Support\Facades\Auth;
 class NewController extends Controller
 {
 
 	public function all_news(){
+        
 
 		$news = News::join('users','news.users_id','=','users.id')->join('type_news','news.type_news_id','=','type_news.id')->select('news.*','users.name','type_news.type_name')->paginate(5);
 		
@@ -29,7 +32,7 @@ class NewController extends Controller
     }
 
     public function post_addnew(NewsRequest $req){
-
+        
     	$title = $req->title;
     	$categorys_id = $req->categorys;
     	$type_news = $req->type_news;
@@ -66,6 +69,17 @@ class NewController extends Controller
     	$news->status = $status;
     	$news->ordernum = $ordernum;
     	$news->save();
+
+        $tags = $req->tags;
+        if($tags != null){
+            foreach ($tags as  $tag) {
+                $add_tag = Tags::firstOrCreate(['tag_name'=> $tag]);
+
+                $newtag = NewTags::firstOrCreate(['news_id'=>$news->id,'tags_id'=>$add_tag->id]);
+
+                
+            }
+        }
     	return redirect()->route('all-news')->with('notification','Thêm thành công');
 
     }
@@ -115,6 +129,17 @@ class NewController extends Controller
     	$news->status = $status;
     	$news->ordernum = $ordernum;
     	$news->save();
+        $tags = $req->tags;
+        if($tags != null){
+            foreach ($tags as $tag) {
+               $edit_tag = Tags::firstOrCreate(['tag_name'=> $tag]);
+
+               $newtag = NewTags::firstOrCreate(['news_id'=>$news->id,'tags_id'=>$edit_tag->id]);
+
+
+            }
+
+        }
     	return redirect()->route('all-news')->with('notification','Cập nhật tin tức thành công');
     	
     }

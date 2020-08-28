@@ -13,13 +13,28 @@
                         <!-- Login Search Area -->
                         <div class="login-search-area d-flex align-items-center">
                             <!-- Login -->
+                           
                             <div class="login d-flex">
-                                <a href="login.html">Đăng nhập</a>
-                                <a href="signup.html">Đăng ký</a>
+                                 @if(Auth::check())
+                                    <div class="dropdown">
+                                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Xin chào {{Auth::user()->name}}
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" style="color:red;text-align: center;" href="#">Xem hồ sơ</a>
+                                                <a class="dropdown-item" style="color:red;text-align: center;" href="#">Đăng xuất</a>
+                                                
+                                            </div>
+                                    </div>
+                                @else
+                                <a href="{{route('login-user')}}">Đăng nhập</a>
+                                <a href="{{route('signup-user')}}">Đăng ký</a>
+                                @endif
                             </div>
                             <!-- Search Form -->
                             <div class="search-form">
-                                <form action="#" method="post">
+                                <form action="{{route('search-new')}}" method="post">
+                                    @csrf
                                     <input type="search" name="search" class="form-control" placeholder="Tìm kiếm">
                                     <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>

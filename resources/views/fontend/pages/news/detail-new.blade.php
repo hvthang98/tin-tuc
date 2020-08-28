@@ -67,10 +67,11 @@
                 <div class="blog-posts-area">
                     <!-- Single Featured Post -->
                     <div class="single-blog-post featured-post single-post">
-                        <div class="post-thumb" style="background-color: red">
-                            <a href="#"><img src="img/bg-img/25.jpg" alt="" style="width: 100%"></a>
-                        </div>
                         @foreach($new as $ne)
+                        <div class="post-thumb" style="background-color: red">
+                            <a href="#"><img src="../../public/images/{{$ne->avatar}}" alt="" style="width: 100%"></a>
+                        </div>
+                        
                             <div class="post-data">
                                 <a href="#" class="post-catagory">{{ $ne->type_news->type_name }}</a>
                                 <a href="#" class="post-title">
@@ -88,9 +89,10 @@
                                         <div class="newspaper-tags d-flex">
                                             <span>Tags:</span>
                                             <ul class="d-flex">
-                                                <li><a href="#">finacial,</a></li>
-                                                <li><a href="#">politics,</a></li>
-                                                <li><a href="#">stock market</a></li>
+                                                @foreach($ne->tags as $tag)
+                                                <li><a href="#">{{$tag->tag_name}} / </a></li>
+                                                @endforeach
+                                                
                                             </ul>
                                         </div>
 
@@ -99,7 +101,7 @@
                                             <a href="#" class="post-like"><img id="like" src="img/core-img/like.png"
                                                     alt=""> <span id="like1">{{ $ne->like }}</span></a>
                                             <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt="">
-                                                <span></span></a>
+                                                <span>{{$ne->comments->count('news_id')}}</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -107,18 +109,7 @@
                     </div>
 
                     <!-- About Author -->
-                    <div class="blog-post-author d-flex">
-                        <div class="author-thumbnail">
-                            <img src="img/bg-img/32.jpg" alt="">
-                        </div>
-                        <div class="author-info">
-                            <a href="#" class="author-name">James Smith, <span>The Author</span></a>
-                            <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi.
-                                Sed pellen tesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis
-                                sapien.</p>
-                        </div>
-                    </div>
-
+                  
                     <div class="pager d-flex align-items-center justify-content-between">
                         <div class="prev">
                             <a href="#" class="active"><i class="fa fa-angle-left"></i> previous</a>
@@ -138,7 +129,7 @@
                             <div class="col-12 col-md-4">
                                 <div class="single-blog-post style-3 mb-80">
                                     <div class="post-thumb">
-                                        <a href="#"><img src="../../public/images/{{ $other->avatar }}" alt=""></a>
+                                        <a href="#"><div style="width: 300px;height: 200px"><img style="width: 300px;height: 200px" src="../../public/images/{{ $other->avatar }}" ></div></a>
                                     </div>
                                     <div class="post-data">
                                         <a href="{{ route('sigle',['id'=>$other->id]) }}"
@@ -151,7 +142,7 @@
                                             <a href="#" class="post-like"><img src="img/core-img/like.png" alt="">
                                                 <span>{{ $other->like }}</span></a>
                                             <a href="#" class="post-comment"><img src="img/core-img/chat.png" alt="">
-                                                <span>10</span></a>
+                                                <span>{{ $other->comments->count() }}</span></a>
                                         </div>
                                     </div>
                                 </div>
